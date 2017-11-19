@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        public View header = LayoutInflater.from(this).inflate(R.layout.app_bar_main, null);
+        NavigationView navigationView = (navigationView) findViewById(R.layout.nav_header_main);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.addHeaderView(header);
+        View headView = navigationView.getHEaderView(0);
+
         TextView leftMenuName = findViewById(R.id.leftMenuName);
 
 
@@ -47,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        //leftMenuName.setText(smp.getName());
+        leftMenuName.setText(smp.getName());
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
