@@ -1,5 +1,6 @@
 package com.luk.puda.momey_manager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Managers.SharedPreferenceManager;
 
@@ -30,13 +32,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        public View header = LayoutInflater.from(this).inflate(R.layout.app_bar_main, null);
-        NavigationView navigationView = (navigationView) findViewById(R.layout.nav_header_main);
+        //View header = LayoutInflater.from(this).inflate(R.layout.app_bar_main, null);
+        /*NavigationView navigationView = (navigationView) findViewById(R.layout.nav_header_main);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.addHeaderView(header);
-        View headView = navigationView.getHEaderView(0);
+        View headView = navigationView.getHEaderView(0);*/
 
-        TextView leftMenuName = findViewById(R.id.leftMenuName);
+        //View header2 = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
+        //TextView leftMenuName = header2.findViewById(R.id.leftMenuName);
+        // = findViewById(R.id.leftMenuName);
+        //leftMenuName.setText(smp.getName());
+        //NavigationView navigationView = null;
+        TextView tvHeaderName, tvHeaderEmail, tvHeaderPhone;
+
+        //Nastaveni leveho menu - eg jmeno email; phone
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        tvHeaderName = (TextView) headerView.findViewById(R.id.leftMenuName);
+        tvHeaderEmail = (TextView) headerView.findViewById(R.id.tvLeftMenuEmail);
+        tvHeaderPhone = (TextView) headerView.findViewById(R.id.tvLeftMenuPhone);
+        tvHeaderName.setText(smp.getName());
+        tvHeaderEmail.setText(smp.getEmail());
+        tvHeaderPhone.setText(smp.getPhone());
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -54,9 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        leftMenuName.setText(smp.getName());
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -110,7 +126,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+            Intent intent2 = new Intent(this, Settings_activity.class);
+            startActivity(intent2);
+
+        } else if(id == R.id.nav_help){
+            Toast.makeText(getApplicationContext(), "Help will be added later", Toast.LENGTH_LONG);
 
         }
 

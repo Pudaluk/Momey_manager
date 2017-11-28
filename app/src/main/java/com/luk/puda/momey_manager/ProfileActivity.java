@@ -1,5 +1,6 @@
 package com.luk.puda.momey_manager;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import javax.xml.datatype.Duration;
 
@@ -29,6 +31,7 @@ public class ProfileActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         final EditText editName = (EditText)findViewById(R.id.editName);
         final EditText editEmail = (EditText)findViewById(R.id.editEmail);
