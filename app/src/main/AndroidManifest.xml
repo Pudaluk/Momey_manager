@@ -33,6 +33,12 @@
             android:label="Settings"
             android:windowSoftInputMode="adjustPan">
         </activity>
+
+        <activity
+            android:name=".AccountSettings"
+            android:label="Settings"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package Managers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 /**
@@ -15,6 +16,9 @@ public class SharedPreferenceManager {
     public static final String Name = "nameKey";
     public static final String Phone = "phoneKey";
     public static final String Email = "emailKey";
+
+    public static final String Balance = "balanceKey";
+    public static final String NameOfAcc = "nameOfAccKey";
 
 
     private Context context;
@@ -54,6 +58,24 @@ public class SharedPreferenceManager {
 
     }
 
+    public void saveBalance(Integer value) {
+
+        SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(Balance, value);
+        editor.commit();
+
+    }
+
+    public void saveNameOfAcc(String value) {
+
+        SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(NameOfAcc, value);
+        editor.commit();
+
+    }
+
     public String getName() {
         SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
 
@@ -79,6 +101,24 @@ public class SharedPreferenceManager {
             return (sharedPref.getString(Email, ""));
         }
         return (sharedPref.getString(Email, ""));
+    }
+
+    public int getBalance() {
+        SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+
+        if (sharedPref.contains(Balance)) {
+            return (sharedPref.getInt(Balance, -1));
+        }
+        return (sharedPref.getInt(Balance, -1));
+    }
+
+    public String getNameOfAcc() {
+        SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
+
+        if (sharedPref.contains(NameOfAcc)) {
+            return (sharedPref.getString(NameOfAcc, ""));
+        }
+        return (sharedPref.getString(NameOfAcc, ""));
     }
 
 

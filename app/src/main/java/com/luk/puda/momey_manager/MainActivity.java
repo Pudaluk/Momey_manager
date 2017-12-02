@@ -1,10 +1,12 @@
 package com.luk.puda.momey_manager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -46,6 +48,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvHeaderName.setText(smp.getName());
         tvHeaderEmail.setText(smp.getEmail());
         tvHeaderPhone.setText(smp.getPhone());
+
+        //nastaveni balance
+        TextView tvBalance = (TextView)findViewById(R.id.tvBalance);
+        if (smp.getBalance() != -1) {
+            tvBalance.setText(String.valueOf(smp.getBalance()));
+        }
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -97,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvHeaderEmail.setText(smp.getEmail());
         tvHeaderPhone.setText(smp.getPhone());
 
+        TextView tvBalance = (TextView)findViewById(R.id.tvBalance);
+        if (smp.getBalance() != -1) {
+            tvBalance.setText(String.valueOf(smp.getBalance()));
+        }
+
         super.onResume();
     }
 
@@ -109,7 +123,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, AccountSettings.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
