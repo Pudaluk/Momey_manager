@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 import Managers.SharedPreferenceManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,17 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //View header = LayoutInflater.from(this).inflate(R.layout.app_bar_main, null);
-        /*NavigationView navigationView = (navigationView) findViewById(R.layout.nav_header_main);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.addHeaderView(header);
-        View headView = navigationView.getHEaderView(0);*/
 
-        //View header2 = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
-        //TextView leftMenuName = header2.findViewById(R.id.leftMenuName);
-        // = findViewById(R.id.leftMenuName);
-        //leftMenuName.setText(smp.getName());
-        //NavigationView navigationView = null;
         TextView tvHeaderName, tvHeaderEmail, tvHeaderPhone;
 
         //Nastaveni leveho menu - eg jmeno email; phone
@@ -91,6 +83,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        TextView tvHeaderName, tvHeaderEmail, tvHeaderPhone;
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        tvHeaderName = (TextView) headerView.findViewById(R.id.leftMenuName);
+        tvHeaderEmail = (TextView) headerView.findViewById(R.id.tvLeftMenuEmail);
+        tvHeaderPhone = (TextView) headerView.findViewById(R.id.tvLeftMenuPhone);
+        tvHeaderName.setText(smp.getName());
+        tvHeaderEmail.setText(smp.getEmail());
+        tvHeaderPhone.setText(smp.getPhone());
+
+        super.onResume();
     }
 
     @Override

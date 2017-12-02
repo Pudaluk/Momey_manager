@@ -23,6 +23,10 @@ public class SharedPreferenceManager {
         this.context = context;
     }
 
+    public static SharedPreferenceManager from(Context context){
+        return new SharedPreferenceManager(context);
+    }
+
     public void saveName(String value) {
 
         SharedPreferences sharedPref = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);

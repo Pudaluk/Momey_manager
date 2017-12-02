@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:layout="@layout/preferences_category"
+        android:title="@string/profile">
+
+        <Preference
+            android:title="@string/profile_name"
+            android:key="nameKey"
+            android:icon="@drawable/ic_person_outline_black_24dp"/>
+        <Preference
+            android:title="@string/profile_email"
+            android:key="emailKey"
+            android:icon="@drawable/ic_mail_outline"/>
+        <Preference
+            android:title="@string/profile_phone"
+            android:key="phoneKey"
+            android:icon="@drawable/ic_phone"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

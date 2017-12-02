@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/LightBlack"
         android:textSize="25dp"
         android:layout_marginBottom="16dp"
         />
@@ -30,7 +30,7 @@
             android:id="@+id/imageView"
             android:layout_width="70sp"
             android:layout_height="70sp"
-            android:tint="@color/colorPrimaryDark"
+            android:tint="@color/LightBlack"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:src="@drawable/ic_person_outline_black_24dp" />
         <LinearLayout
@@ -42,6 +42,7 @@
                 android:id="@+id/leftMenuName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/LightBlack"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:text="Name not set"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -49,12 +50,14 @@
             <TextView
                 android:id="@+id/tvLeftMenuEmail"
                 android:layout_width="wrap_content"
+                android:textColor="@color/LightBlack"
                 android:layout_height="wrap_content"
                 android:text="Email not set" />
 
             <TextView
                 android:id="@+id/tvLeftMenuPhone"
                 android:layout_width="wrap_content"
+                android:textColor="@color/LightBlack"
                 android:layout_height="wrap_content"
                 android:text="Phone not set" />
 
