@@ -39,6 +39,13 @@
             android:label="Settings"
             android:windowSoftInputMode="adjustPan">
         </activity>
+
+        <activity
+            android:name=".CreateRecordActivity"
+            android:label="Create Record"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
     </application>
 
 </manifest>

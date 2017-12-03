@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //test DB
         db = new DatabaseHelper(getApplicationContext());
-
+/*
         Category category_food = new Category("Food");
         Category category_shopping  = new Category("Shopping");
         Category category_home = new Category("Home");
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         long category_investment_id = db.createCategory(category_investment);
         long category_other_id = db.createCategory(category_other);
         long category_income_id = db.createCategory(category_income);
-
+*/
         Log.d("Category count", "Category count: " + db.getAllCategories().size());
 
         Date date = new Date();
@@ -94,11 +94,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SimpleDateFormat simpleDate  =  new SimpleDateFormat("dd/MM/yyyy");
         String strDt = simpleDate .format(date);
         //create record
-        Record rc1 = new Record("spending", strDt, 500, smp.getBalance()-500 );
+        //Record rc1 = new Record("spending", strDt, 500, smp.getBalance()-500 );
 
-        long rc1_id = db.createRecord(rc1, category_food_id);
+        //long rc1_id = db.createRecord(rc1, category_food_id);
 
-        Log.e("Record Count", "Record count: " + db.getAllRecords());
+        Log.e("Record Count", "Record count: " + db.getAllRecords().toString());
 
         Log.d("get category", "Getting All categories");
 
@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Log.d("Record", "Get records under single Tag name");
 
-        List<Record> tagsWatchList = db.getAllRecordsByCategory(category_food.getCategory_name());
-        for (Record rc : tagsWatchList) {
-            Log.d("Record Watchlist time", rc.getCreate_at());
-        }
+        //List<Record> tagsWatchList = db.getAllRecordsByCategory(category_food.getCategory_name());
+        //for (Record rc : tagsWatchList) {
+         //   Log.d("Record Watchlist time", rc.getCreate_at());
+        //}
 
         db.closeDB();
 
@@ -121,8 +121,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Intent intentRecord = new Intent(this, CreateRecordActivity.class);
+                //startActivity(intentRecord);
+                /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", null).show();*/
             }
         });
 
@@ -197,10 +200,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent intentRecord = new Intent(this, CreateRecordActivity.class);
+            startActivity(intentRecord);
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_slideshow) {
 
