@@ -62,12 +62,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + KEY_AMOUNT + " INTEGER,"
             + KEY_ACTUAL_BALANCE + " INTEGER" + ")";
 
-    private static final String CREATE_TABLE_CATEGORY = "CREATE_TABLE "
+    private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE "
             + TABLE_CATEGORY + "( "
             + KEY_ID + " INTEGER PRIMARY KEY, "
-            + KEY_CATEGORY_NAME + "TEXT" + ")";
+            + KEY_CATEGORY_NAME + " TEXT" + ")";
 
-    private static final String CREATE_TABLE_RECORD_CATEGORY = "CREATE_TABLE "
+    private static final String CREATE_TABLE_RECORD_CATEGORY = "CREATE TABLE "
             + TABLE_RECORD_CATEGORY + "( "
             + KEY_ID + " INTEGER PRIMARY KEY, "
             + KEY_RECORD_ID + " INTEGER,"
