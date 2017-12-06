@@ -6,5 +6,7 @@
     <color name="white">#fff</color>
     <color name="LightBlack">#494949</color>
 
+    <color name="Expense">#d41616</color>
+
     <color name="ErrorDark">#af0a0a</color>
 </resources>

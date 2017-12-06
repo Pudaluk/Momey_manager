@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //test DB
         db = new DatabaseHelper(getApplicationContext());
-/*
+
         Category category_food = new Category("Food");
         Category category_shopping  = new Category("Shopping");
         Category category_home = new Category("Home");
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         long category_investment_id = db.createCategory(category_investment);
         long category_other_id = db.createCategory(category_other);
         long category_income_id = db.createCategory(category_income);
-*/
+
         Log.d("Category count", "Category count: " + db.getAllCategories().size());
 
         Date date = new Date();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //long rc1_id = db.createRecord(rc1, category_food_id);
 
-        Log.e("Record Count", "Record count: " + db.getAllRecords().toString());
+        //Log.e("Record Count", "Record count: " + db.getRecord(0).toString());
 
         Log.d("get category", "Getting All categories");
 

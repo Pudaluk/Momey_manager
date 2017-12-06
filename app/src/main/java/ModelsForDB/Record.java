@@ -11,23 +11,26 @@ public class Record {
     String create_at;
     int amount;
     int actual_balance;
+    String category;
 
     public Record(){
     }
 
-    public Record(String type, String create_at, int amount, int actual_balance){
+    public Record(String type, String create_at, int amount, int actual_balance, String category){
         this.type = type;
         this.create_at = create_at;
         this.amount = amount;
         this.actual_balance = actual_balance;
+        this.category = category;
     }
 
-    public Record(int id, String type, String create_at, int amount, int actual_balance){
+    public Record(int id, String type, String create_at, int amount, int actual_balance, String category){
         this.id = id;
         this.type = type;
         this.create_at = create_at;
         this.amount = amount;
         this.actual_balance = actual_balance;
+        this.category = category;
     }
 
     public int getId() {
@@ -68,5 +71,13 @@ public class Record {
 
     public void setActual_balance(int actual_balance) {
         this.actual_balance = actual_balance;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

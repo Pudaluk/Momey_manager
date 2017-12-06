@@ -27,7 +27,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String LOG = "DatabaseHelper";
 
     //version of DB
-    private static final int DATABASE_VERSION = 1;
+    //1 - bad table Record
+    private static final int DATABASE_VERSION = 2;
 
     // name of BD
     private static final String DATABSE_NAME = "MoneyManagerDB";
@@ -60,7 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + KEY_TYPE + " TEXT,"
             + KEY_CREATED_AT + " DATETIME,"
             + KEY_AMOUNT + " INTEGER,"
-            + KEY_ACTUAL_BALANCE + " INTEGER" + ")";
+            + KEY_ACTUAL_BALANCE + " INTEGER,"
+            + KEY_CATEGORY_NAME + " TEXT"+ ")";
 
     private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE "
             + TABLE_CATEGORY + "( "
@@ -108,6 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_CREATED_AT, record.getCreate_at());
         values.put(KEY_AMOUNT, record.getAmount());
         values.put(KEY_ACTUAL_BALANCE, record.getActual_balance());
+        values.put(KEY_CATEGORY_NAME, record.getType());
 
         //insert row
         long record_id = db.insert(TABLE_RECORD, null, values);
@@ -124,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Record getRecord(long record_id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String selectQuery = "SELECT * FROM " + TABLE_RECORD + " WHERE" + KEY_ID + " = " + record_id;
+        String selectQuery = "SELECT * FROM " + TABLE_RECORD + " WHERE " + KEY_ID + " = " + record_id;
         Log.e(LOG, selectQuery);
 
         Cursor c = db.rawQuery(selectQuery, null);
@@ -138,6 +141,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         rc.setCreate_at(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
         rc.setAmount(c.getInt(c.getColumnIndex(KEY_AMOUNT)));
         rc.setActual_balance(c.getInt(c.getColumnIndex(KEY_ACTUAL_BALANCE)));
+        rc.setCategory(c.getString(c.getColumnIndex(KEY_CATEGORY_NAME)));
+
+        c.close();
 
         return rc;
     }
@@ -163,6 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 rc.setCreate_at(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
                 rc.setAmount(c.getInt(c.getColumnIndex(KEY_AMOUNT)));
                 rc.setActual_balance(c.getInt(c.getColumnIndex(KEY_ACTUAL_BALANCE)));
+                rc.setCategory(c.getString(c.getColumnIndex(KEY_CATEGORY_NAME)));
 
                 //adding to list
                 records.add(rc);
