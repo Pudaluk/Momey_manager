@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //test DB
         db = new DatabaseHelper(getApplicationContext());
-
+/*
         Category category_food = new Category("Food");
         Category category_shopping  = new Category("Shopping");
         Category category_home = new Category("Home");
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         long category_investment_id = db.createCategory(category_investment);
         long category_other_id = db.createCategory(category_other);
         long category_income_id = db.createCategory(category_income);
-
+*/
         Log.d("Category count", "Category count: " + db.getAllCategories().size());
 
         Date date = new Date();
@@ -116,6 +116,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //}
 
         db.closeDB();
+
+        TextView structure_of_income_outcome = (TextView)findViewById(R.id.structure_of_income_outcome);
+        List<Record> allRecords = db.getAllRecords();
+        for (Record rec : allRecords){
+            structure_of_income_outcome.append(rec.getType() + " " + rec.getCreate_at() + " " + rec.getAmount() + " " + rec.getType() + " " + rec.getActual_balance() + "\n");
+        }
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -211,11 +219,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
-            Intent intent2 = new Intent(this, Settings_activity.class);
+            Intent intent2 = new Intent(MainActivity.this, Settings_activity.class);
             startActivity(intent2);
 
         } else if(id == R.id.nav_help){
-            Toast.makeText(getApplicationContext(), "Help will be added later", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Help will be added later", Toast.LENGTH_LONG).show();
 
         }
 

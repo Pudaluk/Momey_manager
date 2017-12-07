@@ -158,10 +158,18 @@ public class CreateRecordActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 if (amount_of_rc_et != null || amount_of_rc_et.getText().toString().equals("")){
-                    Record rc1 = new Record(selectedType, selectedDate, Integer.parseInt(amount_of_rc_et.getText().toString()), sharedPref.getBalance()-Integer.parseInt(amount_of_rc_et.getText().toString()), selectedCategory );
-                    //long rc1_id = db.createRecord(rc1, 0);
-                    db.createRecord(rc1, 0);
-                    Toast.makeText(CreateRecordActivity.this, db.createRecord(rc1, 0)+" < record >", Toast.LENGTH_SHORT).show();
+                    if (selectedType.equals("Income")){
+                        Record rc1 = new Record(selectedType, selectedDate, Integer.parseInt(amount_of_rc_et.getText().toString()), sharedPref.getBalance()+Integer.parseInt(amount_of_rc_et.getText().toString()), selectedCategory );
+                        sharedPref.saveBalance(sharedPref.getBalance()+Integer.parseInt(amount_of_rc_et.getText().toString()));
+                        Toast.makeText(CreateRecordActivity.this, " < INCOME >", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Record rc1 = new Record(selectedType, selectedDate, Integer.parseInt(amount_of_rc_et.getText().toString()), sharedPref.getBalance() - Integer.parseInt(amount_of_rc_et.getText().toString()), selectedCategory);
+                        //long rc1_id = db.createRecord(rc1, 0);
+                        sharedPref.saveBalance(sharedPref.getBalance() - Integer.parseInt(amount_of_rc_et.getText().toString()));
+                        Toast.makeText(CreateRecordActivity.this, " < OUTCOME >", Toast.LENGTH_SHORT).show();
+                    }
+                    //db.createRecord(rc1, 0);
+
                 }else
                     Toast.makeText(CreateRecordActivity.this, "ENTER AMOUNT!!", Toast.LENGTH_SHORT).show();
 

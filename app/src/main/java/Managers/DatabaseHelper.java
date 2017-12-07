@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //version of DB
     //1 - bad table Record
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // name of BD
     private static final String DATABSE_NAME = "MoneyManagerDB";
