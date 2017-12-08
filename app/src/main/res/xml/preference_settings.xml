@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:layout="@layout/preferences_category"
+        android:title="@string/settings_info">
+
+        <Preference
+            android:title="@string/settings_intro"
+            android:key="intro" />
+        <Preference
+            android:title="@string/settings_chngelog"
+            android:key="changelog"/>
+        <Preference
+            android:title="@string/settings_about"
+            android:key="about"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

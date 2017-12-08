@@ -1,13 +1,9 @@
 package com.luk.puda.momey_manager;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -219,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
-            Intent intent2 = new Intent(MainActivity.this, Settings_activity.class);
+            Intent intent2 = new Intent(this, SettingsActivitykt.class);
             startActivity(intent2);
 
         } else if(id == R.id.nav_help){
