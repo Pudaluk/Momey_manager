@@ -31,9 +31,6 @@ class SettingsActivitykt : AppCompatActivity() {
             supportActionBar!!.setDisplayShowHomeEnabled(true)
         }
 
-        // Instead of findViewById<TextView>(R.id.textView)
-        textView.setText("Hello, world!")
-
         fragmentManager.beginTransaction().replace(android.R.id.content, SettingsFragmentKt()).commit()
     }
 

@@ -1,10 +1,9 @@
 package Fragments
 
-import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.preference.Preference
 import android.preference.PreferenceFragment
-import com.luk.puda.momey_manager.BuildConfig
 import com.luk.puda.momey_manager.R
 import org.jetbrains.anko.*
 
@@ -40,7 +39,9 @@ class SettingsFragmentKt : PreferenceFragment() {
 
         val about_app = findPreference("about") as Preference
         about_app.setOnPreferenceClickListener {
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                context.vibrator.vibrate(200)
+            }
             alert {
                 title = "About"
                 positiveButton("Close") {  }
