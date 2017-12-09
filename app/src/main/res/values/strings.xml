@@ -28,4 +28,9 @@
     <string name="settings_chngelog">Changelog</string>
     <string name="settings_about">About</string>
     <string name="settings_intro">Intro Application</string>
+
+    <string name="category_name">Category</string>
+    <string name="amount_name">Amount</string>
+
+    <string name="record_created">Record created</string>
 </resources>

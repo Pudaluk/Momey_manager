@@ -48,6 +48,12 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
 
+        <activity
+            android:name=".ListOfRecordsActivity"
+            android:label="Settings"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.luk.puda.momey_manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,13 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import Adapters.RecordAdapter;
 import Managers.DatabaseHelper;
 import Managers.SharedPreferenceManager;
 import ModelsForDB.Category;
@@ -30,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     SharedPreferenceManager smp = new SharedPreferenceManager(this);
     DatabaseHelper db;
+
+    RecordAdapter recordAdapter = null;
+    ListView listView = null;
+    List<Record> records = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,23 +118,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //for (Record rc : tagsWatchList) {
          //   Log.d("Record Watchlist time", rc.getCreate_at());
         //}
-
-        db.closeDB();
-
         TextView structure_of_income_outcome = (TextView)findViewById(R.id.structure_of_income_outcome);
+        int heh = 0;
+
         List<Record> allRecords = db.getAllRecords();
         for (Record rec : allRecords){
-            structure_of_income_outcome.append(rec.getType() + " " + rec.getCreate_at() + " " + rec.getAmount() + " " + rec.getType() + " " + rec.getActual_balance() + "\n");
+            heh = heh +1;
+            //    structure_of_income_outcome.append(rec.getType() + " " + rec.getCreate_at() + " " + rec.getAmount() + " " + rec.getType() + " " + rec.getActual_balance() + "\n");
         }
 
+        records = db.getAllRecords();
+        Collections.reverse(records);
+        recordAdapter = new RecordAdapter(this,R.layout.record_detail, records);
+        listView = (ListView) findViewById(R.id.list_of_records);
+        listView.setAdapter(recordAdapter);
 
+
+
+        Toast.makeText(this, "record count " + heh, Toast.LENGTH_SHORT).show();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intentRecord = new Intent(this, CreateRecordActivity.class);
-                //startActivity(intentRecord);
+                Intent intentRecord = new Intent(getApplicationContext(), CreateRecordActivity.class);
+                startActivity(intentRecord);
                 /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
@@ -141,6 +158,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //close od DB
+        db.closeDB();
     }
 
     @Override
@@ -177,6 +197,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             tvBalance.setText(String.valueOf(smp.getBalance()));
         }
 
+        records = db.getAllRecords();
+        recordAdapter = new RecordAdapter(this,R.layout.record_detail,records);
+
+        listView = (ListView) findViewById(R.id.list_of_records);
+        listView.setAdapter(recordAdapter);
+
         super.onResume();
     }
 
@@ -206,6 +232,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intentRecord = new Intent(this, CreateRecordActivity.class);
             startActivity(intentRecord);
         } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(this, ListOfRecordsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 

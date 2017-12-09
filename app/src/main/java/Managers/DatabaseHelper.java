@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //version of DB
     //1 - bad table Record
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 7;
 
     // name of BD
     private static final String DATABSE_NAME = "MoneyManagerDB";
@@ -110,7 +111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_CREATED_AT, record.getCreate_at());
         values.put(KEY_AMOUNT, record.getAmount());
         values.put(KEY_ACTUAL_BALANCE, record.getActual_balance());
-        values.put(KEY_CATEGORY_NAME, record.getType());
+        values.put(KEY_CATEGORY_NAME, record.getCategory());
 
         //insert row
         long record_id = db.insert(TABLE_RECORD, null, values);
@@ -152,8 +153,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * getting all records
      */
     public List<Record> getAllRecords() {
-        List<Record> records = new ArrayList<Record>();
-        String selectQuery = "SELECT *  FROM " + TABLE_RECORD;
+        List<Record> records = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_RECORD;
 
         Log.e(LOG, selectQuery);
 

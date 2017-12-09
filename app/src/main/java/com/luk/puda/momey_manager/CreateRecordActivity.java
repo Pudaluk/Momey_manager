@@ -45,7 +45,7 @@ public class CreateRecordActivity extends AppCompatActivity implements AdapterVi
 
     LinearLayout typeIn_ll,typeOut_ll;
     //string to save in DB
-    String selectedType = "Income";
+    String selectedType = "Outcome";
     String selectedDate;
     TextView pick_date;
     EditText amount_of_rc_et;
@@ -160,13 +160,16 @@ public class CreateRecordActivity extends AppCompatActivity implements AdapterVi
                 if (amount_of_rc_et != null || amount_of_rc_et.getText().toString().equals("")){
                     if (selectedType.equals("Income")){
                         Record rc1 = new Record(selectedType, selectedDate, Integer.parseInt(amount_of_rc_et.getText().toString()), sharedPref.getBalance()+Integer.parseInt(amount_of_rc_et.getText().toString()), selectedCategory );
+                        long rc1_id = db.createRecord(rc1, 0);
                         sharedPref.saveBalance(sharedPref.getBalance()+Integer.parseInt(amount_of_rc_et.getText().toString()));
-                        Toast.makeText(CreateRecordActivity.this, " < INCOME >", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateRecordActivity.this, getString(R.string.record_created), Toast.LENGTH_SHORT).show();
+                        amount_of_rc_et.setText("");
                     } else {
                         Record rc1 = new Record(selectedType, selectedDate, Integer.parseInt(amount_of_rc_et.getText().toString()), sharedPref.getBalance() - Integer.parseInt(amount_of_rc_et.getText().toString()), selectedCategory);
-                        //long rc1_id = db.createRecord(rc1, 0);
+                        long rc1_id = db.createRecord(rc1, 0);
                         sharedPref.saveBalance(sharedPref.getBalance() - Integer.parseInt(amount_of_rc_et.getText().toString()));
-                        Toast.makeText(CreateRecordActivity.this, " < OUTCOME >", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateRecordActivity.this, getString(R.string.record_created), Toast.LENGTH_SHORT).show();
+                        amount_of_rc_et.setText("");
                     }
                     //db.createRecord(rc1, 0);
 

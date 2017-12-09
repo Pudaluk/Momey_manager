@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/half_border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/half_border"
+        android:paddingRight="@dimen/half_border"
+        android:layout_marginTop="@dimen/half_border"
+        android:paddingBottom="0dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:id="@+id/category" />
+
+        <TextView
+            android:text="Amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_weight="1.2"
+            android:id="@+id/amount" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/half_border"
+        android:paddingRight="@dimen/half_border"
+        android:paddingBottom="0dp">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:text="Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1.2"
+            android:id="@+id/date" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:visibility="gone"
+        android:layout_weight="3"
+        android:id="@+id/type" />
+
+
+
+</LinearLayout>
