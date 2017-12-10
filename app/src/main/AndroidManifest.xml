@@ -54,6 +54,12 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
 
+        <activity
+            android:name=".ChartsActivity"
+            android:label="Charts"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
     </application>
 
 </manifest>

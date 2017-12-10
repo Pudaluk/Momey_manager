@@ -9,4 +9,14 @@
     <color name="Expense">#d41616</color>
 
     <color name="ErrorDark">#af0a0a</color>
+
+    <color name="food">#fdb541</color>
+    <color name="shopping">#14f2e7</color>
+    <color name="home">#8f8f8f</color>
+    <color name="traffic">#5093ff</color>
+    <color name="car">#32ec3b</color>
+    <color name="free_time">#ff3c39</color>
+    <color name="pc">#cddc39</color>
+    <color name="investment">#304ffe</color>
+    <color name="other">#000</color>
 </resources>

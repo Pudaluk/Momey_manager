@@ -236,6 +236,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
+            Intent intent = new Intent(this, ChartsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
