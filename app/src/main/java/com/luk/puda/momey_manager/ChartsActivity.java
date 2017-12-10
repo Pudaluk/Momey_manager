@@ -2,6 +2,7 @@ package com.luk.puda.momey_manager;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -73,6 +74,7 @@ public class ChartsActivity extends AppCompatActivity {
 
         private PieChartView chart;
         private PieChartData data;
+        Context con;
 
         private boolean hasLabels = true;
         private boolean hasLabelsOutside = false;
@@ -141,15 +143,15 @@ public class ChartsActivity extends AppCompatActivity {
                 }
 
             }
-            values.add(new SliceValue(food, R.color.food));
-            values.add(new SliceValue(shopping, R.color.shopping));
-            values.add(new SliceValue(home, R.color.home));
-            values.add(new SliceValue(traffic, R.color.traffic));
-            values.add(new SliceValue(car, R.color.car));
-            values.add(new SliceValue(free_time, R.color.free_time));
-            values.add(new SliceValue(pc, R.color.pc));
-            values.add(new SliceValue(investment, R.color.investment));
-            values.add(new SliceValue(other, R.color.other));
+            values.add(new SliceValue(food, getContext().getResources().getColor(R.color.food)));
+            values.add(new SliceValue(shopping, getContext().getResources().getColor(R.color.shopping)));
+            values.add(new SliceValue(home, getContext().getResources().getColor(R.color.home)));
+            values.add(new SliceValue(traffic, getContext().getResources().getColor(R.color.traffic)));
+            values.add(new SliceValue(car, getContext().getResources().getColor(R.color.car)));
+            values.add(new SliceValue(free_time, getContext().getResources().getColor(R.color.free_time)));
+            values.add(new SliceValue(pc, getContext().getResources().getColor(R.color.pc)));
+            values.add(new SliceValue(investment, getContext().getResources().getColor(R.color.investment)));
+            values.add(new SliceValue(other, getContext().getResources().getColor(R.color.other)));
 
 
 
